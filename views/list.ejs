@@ -1,0 +1,29 @@
+<%- include("header") -%>
+  <div class="box" id="heading">
+    <h1><%= theDay %>!</h1>
+
+  </div>
+
+  <div class="box">
+    <ul>
+
+      <% NewItem.forEach(function(found) { %>
+        <form  action="/delete" method="post">
+
+      <div class="item">
+        <input type="checkbox" name="checkbox" value="<%= found._id %>" onchange="this.form.submit()">
+        <p ><%= found.name %></p>
+      </div>
+      <input type="hidden" name="listname" value="<%= theDay %>"></input>
+    </form>
+
+      <% }); %>
+    </ul>
+    <form class="item" action="/" method="post">
+      <input type="text" name="UserInput" placeholder="New Item" autocomplete="off">
+      <button type="submit" name="list" value=<%= theDay %> >+</button>
+    </form>
+
+  </div>
+
+  <%- include("footer") -%>
